@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet var textField:UITextField
+    @IBOutlet var webView:UIWebView
                             
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +21,20 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func didClickGo(AnyObject) {
+        // grab text value from input field
+        var text = textField.text
+        
+        // create NSURL object from the text
+        var url = NSURL.URLWithString(text)
+        
+        // create request object from NSURL
+        var request = NSURLRequest(URL: url)
+        
+        // load request object (containng url) in the webview
+        webView.loadRequest(request)
     }
 
 
